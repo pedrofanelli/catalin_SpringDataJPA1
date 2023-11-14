@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,12 +30,12 @@ abstract class CatalinSpringDataJpa1ApplicationTests {
 
     @BeforeAll
     void beforeAll() {
-        userRepository.saveAll(generateUsers());
+        userRepository.saveAll(generateUsers()); // general methods, we don't implement them
     }
     
     @AfterAll
     void afterAll() {
-        userRepository.deleteAll();
+        userRepository.deleteAll();  // general methods, we don't implement them
     }
     
     private static List<User> generateUsers() {
