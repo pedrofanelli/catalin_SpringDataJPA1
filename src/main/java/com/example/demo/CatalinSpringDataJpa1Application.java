@@ -24,6 +24,7 @@ public class CatalinSpringDataJpa1Application {
 		SpringApplication.run(CatalinSpringDataJpa1Application.class, args);
 	}
 
+	/* This was before using the test classes, now they are created there
     @Bean
     ApplicationRunner configure(UserRepository userRepository) {
 		return env ->
@@ -53,5 +54,6 @@ public class CatalinSpringDataJpa1Application {
 			userRepository.findAll().forEach(System.out::println);
 		};
 	}
+	*/
 	
 }
