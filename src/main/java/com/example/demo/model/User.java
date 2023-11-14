@@ -32,7 +32,7 @@ public class User {
         this.registrationDate = registrationDate;
     }
 
-    public Long getId() {
+    public Long getId() { // we dont build an id setter, it's automatic
         return id;
     }
 
