@@ -16,7 +16,13 @@ import com.example.demo.repositories.UserRepository;
 import com.example.demo.model.User;
 
 /**
- * Here we will test all the methods that make the queries to the database!
+ * Abstract class that will be implemented by all the classes with their respective tests
+ * Each time a test starts, the beforeall and afterall will execute
+ * 
+ * Using the @TestInstance(TestInstance.Lifecycle.PER_CLASS) annotation, we ask JUnit 5 to 
+ * create a single instance of the test class and reuse it for all test methods. This will allow 
+ * us to make the @BeforeAll and @AfterAll annotated methods nonstatic and to directly use the autowired 
+ * UserRepository instance field inside them.
  * 
  * @author peter
  *
@@ -28,6 +34,10 @@ abstract class CatalinSpringDataJpa1ApplicationTests {
 	@Autowired
     UserRepository userRepository;
 
+	/**
+	 * The @BeforeAll annotated method will be executed once before executing all tests from a 
+	 * class that extends SpringDataJpaApplicationTests.
+	 */
     @BeforeAll
     void beforeAll() {
         userRepository.saveAll(generateUsers()); // general methods, we don't implement them
