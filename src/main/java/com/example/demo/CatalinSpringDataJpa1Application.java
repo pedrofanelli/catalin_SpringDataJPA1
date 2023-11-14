@@ -18,8 +18,8 @@ public class CatalinSpringDataJpa1Application {
 		SpringApplication.run(CatalinSpringDataJpa1Application.class, args);
 	}
 
-	@Bean
-	public ApplicationRunner configure(UserRepository userRepository) {
+    @Bean
+    ApplicationRunner configure(UserRepository userRepository) {
 		return env ->
 		{
 			User user1 = new User("beth", LocalDate.of(2023, Month.AUGUST, 3));
