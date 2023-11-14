@@ -11,6 +11,12 @@ import org.springframework.context.annotation.Bean;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.model.User;
 
+/**
+ * We will test the methods on the test package, allowing us to use JUnit
+ * 
+ * @author peter
+ *
+ */
 @SpringBootApplication
 public class CatalinSpringDataJpa1Application {
 

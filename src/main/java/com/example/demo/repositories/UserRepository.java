@@ -8,6 +8,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.model.User;
 
+/**
+ * We will test theses methods on the test package, allowing us to use JUnit
+ * 
+ * @author peter
+ *
+ */
 public interface UserRepository extends JpaRepository<User, Long> {
 	
 	User findByUsername(String username);
