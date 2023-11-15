@@ -18,6 +18,7 @@ public class Projection {
 
         String getUsername();
 
+        // Spring Expression Language!
         @Value("#{target.username}"+" "+"#{target.email}")
         String getInfo();
 
