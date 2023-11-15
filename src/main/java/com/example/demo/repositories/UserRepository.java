@@ -83,17 +83,24 @@ public interface UserRepository extends JpaRepository<User, Long> {
     
     
     /*
+     * QueryResultsTest with Jakarta Persistence Query Language!!!
      * 
+     * If the method naming is wrong for any of the previous methods that follow the Spring Data JPA naming 
+     * conventions (for example, the entity property does not match in the query method), you will get an error when 
+     * the application context is loaded. If you are using the @Query annotation and the query you wrote is wrong, you 
+     * will get an error at runtime when executing that method. Thus, the @Query annotated methods are more flexible, but 
+     * they also provide less safety.
      */
-    @Query("select count(u) from User u where u.active = ?1")
+    @Query("select count(u) from User u where u.active = ?1") //one way of passing parameters
     int findNumberOfUsersByActivity(boolean active);
 
-    @Query("select u from User u where u.level = :level and u.active = :active")
+    @Query("select u from User u where u.level = :level and u.active = :active") // another way
     List<User> findByLevelAndActive(@Param("level") int level, @Param("active") boolean active);
 
-    @Query(value = "SELECT COUNT(*) FROM USERS WHERE ACTIVE = ?1", nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) FROM USERS WHERE ACTIVE = ?1", nativeQuery = true) // native SQL LANGUAGE
     int findNumberOfUsersByActivityNative(boolean active);
 
+    // Here we use Spring Expression Language (SpEL) to get the entity name
     @Query("select u.username, LENGTH(u.email) as email_length from #{#entityName} u where u.username like %?1%")
     List<Object[]> findByAsArrayAndSort(String text, Sort sort);
     
