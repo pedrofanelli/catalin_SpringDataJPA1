@@ -135,6 +135,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("update User u set u.level = ?2 where u.level = ?1")
     int updateLevel(int oldLevel, int newLevel);
 
+    /**
+     * No usamos @Modifying porque es un método implementado por la interfaz, no por nosotros, que ya lo tiene!
+     * 
+     * @param level
+     * @return
+     */
     @Transactional
     int deleteByLevel(int level);
 
