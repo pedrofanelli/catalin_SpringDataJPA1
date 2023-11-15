@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.util.Streamable;
 
+import com.example.demo.model.Projection;
 import com.example.demo.model.User;
 
 /**
@@ -103,5 +104,19 @@ public interface UserRepository extends JpaRepository<User, Long> {
     // Here we use Spring Expression Language (SpEL) to get the entity name
     @Query("select u.username, LENGTH(u.email) as email_length from #{#entityName} u where u.username like %?1%")
     List<Object[]> findByAsArrayAndSort(String text, Sort sort);
+    
+    
+    /**
+     * PROJECTION! 
+     */
+    
+    // inner interface
+    List<Projection.UserSummary> findByRegistrationDateAfter(LocalDate date);
+
+    // inner class
+    List<Projection.UsernameOnly> findByEmail(String username);
+
+    // dynamic return type
+    <T> List<T> findByEmail(String username, Class<T> type);
     
 }
